@@ -4,6 +4,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+# I/O
 if len(sys.argv) < 2:
     dataset = "shakespeare"
 else:
@@ -12,13 +13,12 @@ print "Selected dataset: " + str(dataset)
 dir = "./data/" + dataset
 input_data = open(dir + "/input.txt", 'r').read()
 output_data = open(dir + "/output.txt", "w")
-
 chars = list(set(input_data))
 data_size, vocabulary_size = len(input_data), len(chars)
 char_to_index = {ch: i for i, ch in enumerate(chars)}
 index_to_char = {i: ch for i, ch in enumerate(chars)}
 
-
+# Hyperparameters
 HIDDEN_LAYER_SIZE = 100
 SEQUENCE_LENGTH = 25
 LEARNING_RATE = 1e-1
@@ -27,7 +27,7 @@ LOGGING_FREQUENCY = 1e3
 TEXT_SAMPLING_FREQUENCY = 1e3
 GRADIENT_LIMIT = 5
 
-# model parameters
+# Model
 input_to_hidden = np.random.randn(HIDDEN_LAYER_SIZE, vocabulary_size) * 0.01
 hidden_to_hidden = np.random.randn(HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE) * 0.01
 hidden_to_output = np.random.randn(vocabulary_size, HIDDEN_LAYER_SIZE) * 0.01
@@ -69,6 +69,7 @@ def update(inputs, targets, hidden_previous):
 
 def plot_smooth_loss(smooth_losses):
     plt.plot(range(len(smooth_losses)), smooth_losses)
+    plt.title(dataset)
     plt.xlabel('iteration')
     plt.ylabel('smooth loss')
     plt.savefig(dir + "/loss.png", bbox_inches="tight")
@@ -133,8 +134,8 @@ def rnn():
 
         # perform parameter update with Adagrad
         for param, gradient_param, memory in zip([input_to_hidden, hidden_to_hidden, hidden_to_output, hidden_bias, output_bias],
-                                                [gradient_input_to_hidden, gradient_hidden_to_hidden, gradient_hidden_to_output, gradient_hidden_bias, gradient_output_bias],
-                                                [memory_input_to_hidden, memory_hidden_to_hidden, memory_hidden_to_output, memory_bias_hidden, memory_bias_output]):
+                                                 [gradient_input_to_hidden, gradient_hidden_to_hidden, gradient_hidden_to_output, gradient_hidden_bias, gradient_output_bias],
+                                                 [memory_input_to_hidden, memory_hidden_to_hidden, memory_hidden_to_output, memory_bias_hidden, memory_bias_output]):
             memory += gradient_param * gradient_param
             param += -LEARNING_RATE * gradient_param / np.sqrt(memory + ADAGRAD_UPDATE_RATE)
 
