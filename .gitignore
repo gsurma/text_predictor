@@ -102,3 +102,5 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+rnn_2.py
+rnn_k.py

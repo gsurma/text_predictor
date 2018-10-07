@@ -1,8 +1,12 @@
 <h3 align="center">
-  <img src="assets/password_cracker_icon_web.png" width="300">
+  <img src="assets/text_predictor_icon_web.png" width="300">
 </h3>
 
-# Password Cracker
+# Text Predictor
+1. shakespeare 500
+2. reuters 300
+3. floyd shakespeare 300
+4. floyd shakespeare 100
 
 NEURAL NET PASSWORD CRACKING
 password_cracker
