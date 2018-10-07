@@ -27,12 +27,6 @@ LOGGING_FREQUENCY = 1e3
 TEXT_SAMPLING_FREQUENCY = 1e3
 GRADIENT_LIMIT = 5
 
-# # Model
-# input_to_hidden = np.random.randn(HIDDEN_LAYER_SIZE, vocabulary_size) * 0.01
-# hidden_to_hidden = np.random.randn(HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE) * 0.01
-# hidden_to_output = np.random.randn(vocabulary_size, HIDDEN_LAYER_SIZE) * 0.01
-# hidden_bias = np.zeros((HIDDEN_LAYER_SIZE, 1))
-# output_bias = np.zeros((vocabulary_size, 1))
 
 class RNNModel:
 
@@ -62,24 +56,24 @@ def update(inputs, targets, hidden_previous):
         output_state[t] = np.dot(base.hidden_to_output, hidden_state[t]) + base.output_bias  # unnormalized log probabilities for next chars
         probabilites_state[t] = np.exp(output_state[t]) / np.sum(np.exp(output_state[t]))  # probabilities for next chars
         loss += -np.log(probabilites_state[t][targets[t], 0])  # softmax (cross-entropy loss)
-    # backward pass: compute gradients going backwards
-    gradient_input_to_hidden, gradient_hidden_to_hidden, gradient_hidden_to_output = np.zeros_like(base.input_to_hidden), np.zeros_like(base.hidden_to_hidden), np.zeros_like(base.hidden_to_output)
-    gradient_hidden_bias, gradient_output_bias = np.zeros_like(base.hidden_bias), np.zeros_like(base.output_bias)
+
+    gradient = RNNModel()
+
     gradient_hidden_next = np.zeros_like(hidden_state[0])
     for t in reversed(xrange(len(inputs))):
         gradient_output = np.copy(probabilites_state[t])
         gradient_output[targets[t]] -= 1  # backprop into y. see http://cs231n.github.io/neural-networks-case-study/#grad if confused here
-        gradient_hidden_to_output += np.dot(gradient_output, hidden_state[t].T)
-        gradient_output_bias += gradient_output
+        gradient.hidden_to_output += np.dot(gradient_output, hidden_state[t].T)
+        gradient.output_bias += gradient_output
         gradient_hidden = np.dot(base.hidden_to_output.T, gradient_output) + gradient_hidden_next  # backprop into h
         gradient_hidden_raw = (1 - hidden_state[t] * hidden_state[t]) * gradient_hidden  # backprop through tanh nonlinearity
-        gradient_hidden_bias += gradient_hidden_raw
-        gradient_input_to_hidden += np.dot(gradient_hidden_raw, input_state[t].T)
-        gradient_hidden_to_hidden += np.dot(gradient_hidden_raw, hidden_state[t - 1].T)
+        gradient.hidden_bias += gradient_hidden_raw
+        gradient.input_to_hidden += np.dot(gradient_hidden_raw, input_state[t].T)
+        gradient.hidden_to_hidden += np.dot(gradient_hidden_raw, hidden_state[t - 1].T)
         gradient_hidden_next = np.dot(base.hidden_to_hidden.T, gradient_hidden_raw)
-    for gradient_param in [gradient_input_to_hidden, gradient_hidden_to_hidden, gradient_hidden_to_output, gradient_hidden_bias, gradient_output_bias]:
+    for gradient_param in [gradient.input_to_hidden, gradient.hidden_to_hidden, gradient.hidden_to_output, gradient.hidden_bias, gradient.output_bias]:
         np.clip(gradient_param, -GRADIENT_LIMIT, GRADIENT_LIMIT, out=gradient_param)  # clip to mitigate exploding gradients
-    return loss, gradient_input_to_hidden, gradient_hidden_to_hidden, gradient_hidden_to_output, gradient_hidden_bias, gradient_output_bias, hidden_state[len(inputs) - 1]
+    return loss, gradient, hidden_state[len(inputs) - 1]
 
 
 def plot_smooth_loss(smooth_losses):
@@ -110,12 +104,6 @@ def rnn():
     iteration = 0
     data_pointer = 0
 
-    memory_input_to_hidden = np.zeros_like(base.input_to_hidden)
-    memory_hidden_to_hidden = np.zeros_like(base.hidden_to_hidden)
-    memory_hidden_to_output = np.zeros_like(base.hidden_to_output)
-    memory_bias_hidden = np.zeros_like(base.hidden_bias)
-    memory_bias_output = np.zeros_like(base.output_bias)
-
     memory = RNNModel()
 
     smooth_loss = None
@@ -138,7 +126,7 @@ def rnn():
             output_data.write("\n")
 
         # forward seq_length characters through the net and fetch gradient
-        loss, gradient_input_to_hidden, gradient_hidden_to_hidden, gradient_hidden_to_output, gradient_hidden_bias, gradient_output_bias, hidden_previous = update(inputs, targets, hidden_previous)
+        loss, gradient, hidden_previous = update(inputs, targets, hidden_previous)
 
         smooth_loss = loss if smooth_loss is None else smooth_loss * 0.999 + loss * 0.001
 
@@ -150,9 +138,7 @@ def rnn():
             plot_smooth_loss(smooth_losses)
 
         # perform parameter update with Adagrad
-        for base_param, gradient_param, memory_param in zip(base,
-                                                            [gradient_input_to_hidden, gradient_hidden_to_hidden, gradient_hidden_to_output, gradient_hidden_bias, gradient_output_bias],
-                                                            memory):
+        for base_param, gradient_param, memory_param in zip(base, gradient, memory):
             memory_param += gradient_param * gradient_param
             base_param += -LEARNING_RATE * gradient_param / np.sqrt(memory_param + ADAGRAD_UPDATE_RATE)
 
