@@ -3,27 +3,29 @@
 </h3>
 
 # Text Predictor
-1. STOPPED reuters 300
-2. STOPPED hackernews 100
-3. STOPPED war_and_peace 100
-4. 
-5. reuters 512
-6. wikipedia 512
-7. f war_and_peace 512
-8. f hackernews 512
 
 
-https://github.com/karpathy/randomfun/blob/master/min-char-rnn-nb3.ipynb
+## Idea
+1. Train a RNN model on a given dataset (.txt file).
+2. Predict text based on a trained model.
+
+
+## Usage
+1. Clone the repo.
+2. Go to the project's root folder.
+3. Install required packages`pip install -r requirements.txt`.
+4. `python text_predictor.py <dataset>`.
 
 ## Datasets
 	reuters (580 MB) - collection of reuters headlines
 	war_and_peace (3 MB) - Leo Tolstoy's War and Peace novel
 	wikipedia (100 MB) - excerpt from English wikipedia
 	hackernews (90 KB) - collection of hackernews headlines
+Feel free to add new datasets. Just create a folder in the ./data dir and put an input.txt file there. Output file along with the training plot will be automatically generated there.
 	
 
-## Training
-Training time: 5 M iterations
+## Results
+Training time: 5 M iterations (about x hours on 2.9 GHz Intel i7 Quad-Core CPU)
 
 
 ### Hyperparameters
@@ -41,7 +43,18 @@ Training time: 5 M iterations
 
 
 	
-	
+1. STOPPED reuters 300
+2. STOPPED hackernews 100
+3. STOPPED war_and_peace 100
+4. 
+5. reuters 512
+6. wikipedia 512
+7. f war_and_peace 512
+8. f hackernews 512
+
+
+https://github.com/karpathy/randomfun/blob/master/min-char-rnn-nb3.ipynb
+
 
 
 https://github.com/karpathy/char-rnn

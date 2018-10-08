@@ -92,7 +92,6 @@ def update(inputs, targets, hidden_previous):
         np.clip(gradient_param, -GRADIENT_LIMIT, GRADIENT_LIMIT, out=gradient_param)
     return loss, gradient, hidden_state[len(inputs) - 1]
 
-
 def plot_loss(losses):
     plt.plot(range(len(losses)), losses)
     plt.title(dataset)
@@ -100,7 +99,6 @@ def plot_loss(losses):
     plt.ylabel("loss")
     plt.savefig(dir + "/loss.png", bbox_inches="tight")
     plt.close()
-
 
 def sample_text(iteration, previous_hidden, seed_index, n):
     input = np.zeros((vocabulary_size, 1))
@@ -122,12 +120,10 @@ def sample_text(iteration, previous_hidden, seed_index, n):
     output_file.write("\n")
     output_file.close()
 
-
 def adagrad_update(memory, gradient):
     for base_param, gradient_param, memory_param in zip(base, gradient, memory):
         memory_param += gradient_param * gradient_param
         base_param += -LEARNING_RATE * gradient_param / np.sqrt(memory_param + ADAGRAD_UPDATE_RATE)
-
 
 def rnn():
 
