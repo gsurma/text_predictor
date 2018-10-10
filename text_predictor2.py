@@ -34,7 +34,7 @@ output_file.close()
 # Hyperparameters
 HIDDEN_LAYER_SIZE = 512
 SEQUENCE_LENGTH = 20
-LEARNING_RATE = 1e-1
+LEARNING_RATE = 0.001
 ADAGRAD_UPDATE_RATE = 1e-8
 LOGGING_FREQUENCY = 10
 TEXT_SAMPLING_FREQUENCY = 1000
@@ -43,26 +43,40 @@ RANDOM_WEIGHT_INIT_FACTOR = 1e-2
 LOSS_SMOOTHING_FACTOR = 0.999
 TEXT_SAMPLE_LENGTH = 200
 
-class RNNlayer(object):
 
-    def __init__(self, x_size, h_size, y_size, learning_rate):
+class RNNLayerModel:
+
+    def __init__(self, random_init=False):
+        self.input_to_hidden = (np.random.randn(HIDDEN_LAYER_SIZE, vocabulary_size) * RANDOM_WEIGHT_INIT_FACTOR) if random_init else np.zeros((HIDDEN_LAYER_SIZE, vocabulary_size))
+        self.hidden_to_hidden = (np.random.randn(HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE) * RANDOM_WEIGHT_INIT_FACTOR) if random_init else np.zeros((HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE))
+        self.hidden_to_output = (np.random.randn(vocabulary_size, HIDDEN_LAYER_SIZE) * RANDOM_WEIGHT_INIT_FACTOR) if random_init else np.zeros((vocabulary_size, HIDDEN_LAYER_SIZE))
+        self.hidden_bias = np.zeros((HIDDEN_LAYER_SIZE, 1))
+        self.output_bias = np.zeros((vocabulary_size, 1))
+
+    def __iter__(self):
+        return iter([self.input_to_hidden, self.hidden_to_hidden, self.hidden_to_output, self.hidden_bias, self.output_bias])
+
+
+class RNNLayer:
+
+    def __init__(self, x_size, h_size, y_size):
         self.h_size = h_size
-        self.learning_rate = learning_rate#ugh, nightmares
 
-        #inputs and internal states for each layer, used during backpropagation
         self.x = {}
         self.h = {}
         self.h_last = np.zeros((h_size, 1))
 
-        #x is the input. h is the internal hidden stuff. y is the output.
-        self.W_xh = np.random.randn(h_size, x_size)*0.01#x -> h
-        self.W_hh = np.random.randn(h_size, h_size)*0.01#h -> h
-        self.W_hy = np.random.randn(y_size, h_size)*0.01#h -> y
-        self.b_h = np.zeros((h_size, 1))#biases
+        self.base = RNNLayerModel(random_init=True)
+        self.memory = RNNLayerModel()
+        self.gradient = RNNLayerModel()
+
+        self.W_xh = np.random.randn(h_size, x_size)*RANDOM_WEIGHT_INIT_FACTOR
+        self.W_hh = np.random.randn(h_size, h_size)*RANDOM_WEIGHT_INIT_FACTOR
+        self.W_hy = np.random.randn(y_size, h_size)*RANDOM_WEIGHT_INIT_FACTOR
+        self.b_h = np.zeros((h_size, 1))
         self.b_y = np.zeros((y_size, 1))
 
-        #the Adagrad gradient update relies upon having a memory of the sum of squares of dparams
-        self.adaW_xh = np.zeros((h_size, x_size))#start sums at 0
+        self.adaW_xh = np.zeros((h_size, x_size))
         self.adaW_hh = np.zeros((h_size, h_size))
         self.adaW_hy = np.zeros((y_size, h_size))
         self.adab_h = np.zeros((h_size, 1))
@@ -143,39 +157,24 @@ class RNNlayer(object):
 
         #clip to mitigate exploding gradients
         for dparam in [dW_xh, dW_hh, dW_hy, db_h, db_y]:
-            dparam = np.clip(dparam, -5, 5)
+            dparam = np.clip(dparam, -GRADIENT_LIMIT, GRADIENT_LIMIT)
         for t in range(len(dx)):
-            dx[t] = np.clip(dx[t], -5, 5)
+            dx[t] = np.clip(dx[t], -GRADIENT_LIMIT, GRADIENT_LIMIT)
 
-        #update RNN parameters according to Adagrad
-        #yes, it calls by reference, so the actual things do get updated
         for param, dparam, adaparam in zip([self.W_hh, self.W_xh, self.W_hy, self.b_h, self.b_y], \
-                    [dW_hh, dW_xh, dW_hy, db_h, db_y], \
-                    [self.adaW_hh, self.adaW_xh, self.adaW_hy, self.adab_h, self.adab_y]):
+                                            [dW_hh, dW_xh, dW_hy, db_h, db_y], \
+                                            [self.adaW_hh, self.adaW_xh, self.adaW_hy, self.adab_h, self.adab_y]):
             adaparam += dparam*dparam
-            param += -self.learning_rate*dparam/np.sqrt(adaparam+1e-8)
+            param += -LEARNING_RATE*dparam/np.sqrt(adaparam+ADAGRAD_UPDATE_RATE)
 
         return dx
 
-def test():
-    # #open a text file
-    # data = open('data/shakespeare/input.txt', 'r').read() # should be simple plain text file
-    # chars = list(set(data))
-    # data_size, vocab_size = len(data), len(chars)
-    # print 'data has %d characters, %d unique.' % (data_size, vocab_size)
-    #
-    # #make some dictionaries for encoding and decoding from 1-of-k
-    # char_to_ix = { ch:i for i,ch in enumerate(chars) }
-    # ix_to_char = { i:ch for i,ch in enumerate(chars) }
+def rnn():
+    rnn1 = RNNLayer(vocabulary_size, HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE)
+    rnn2 = RNNLayer(HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE)
+    rnn3 = RNNLayer(HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE, vocabulary_size)
 
-    #num_hid_layers = 3, insize and outsize are len(chars). hidsize is 512 for all layers. learning_rate is 0.1.
-    rnn1 = RNNlayer(len(chars), 512, 512, 0.001)
-    rnn2 = RNNlayer(512, 512, 512, 0.001)
-    rnn3 = RNNlayer(512, 512, len(chars), 0.001)
-
-    #iterate over batches of input and target output
-
-    smooth_loss = None#-np.log(1.0/len(chars))*seq_length#loss at iteration 0
+    smooth_loss = None
     smooth_error = None
     smooth_losses = []
     smooth_errors = []
@@ -187,23 +186,16 @@ def test():
     while True:
         if data_pointer + SEQUENCE_LENGTH + 1 >= len(input_data) or iteration == 0:
             resets += 1
-            #hidden_previous = np.zeros((HIDDEN_LAYER_SIZE, 1))
             data_pointer = 0
             print('{{"metric": "reset", "value": {}}}'.format(resets))
         inputs = [char_to_index[char] for char in input_data[data_pointer:data_pointer + SEQUENCE_LENGTH]]
         targets = [char_to_index[char] for char in input_data[data_pointer + 1:data_pointer + SEQUENCE_LENGTH + 1]]
 
         if iteration % TEXT_SAMPLING_FREQUENCY == 0:
-            sample_ix = sample([rnn1, rnn2, rnn3], inputs[0], 200, len(chars))
-            text = ''.join([index_to_char[n] for n in sample_ix])
-            output_file = open(output_dir, "a")
-            output_file.write("Iteration: " + str(iteration) + "\n")
-            output_file.write(text + "\n")
-            output_file.write("\n")
-            output_file.close()
+            sample_text([rnn1, rnn2, rnn3], inputs[0], iteration)
 
-        # forward pass
-        x = oneofk(inputs, len(chars))
+        # Forward pass
+        x = one_of_k(inputs, len(chars))
         y1, p1 = rnn1.step(x)
         y2, p2 = rnn2.step(y1)
         y3, p3 = rnn3.step(y2)
@@ -226,7 +218,7 @@ def test():
             print('{{"metric": "smooth_loss", "value": {}}}'.format(smooth_loss))
             print('{{"metric": "smooth_error", "value": {}}}'.format(smooth_error))
 
-        # backward pass
+        # Backward pass
         dy = logprobs(p3, targets)
         dx3 = rnn3.backprop(dy)
         dx2 = rnn2.backprop(dx3)
@@ -234,48 +226,6 @@ def test():
 
         data_pointer += SEQUENCE_LENGTH
         iteration += 1
-
-
-    # for j in range(2000):
-    #     print "============== j = ",j," =================="
-    #     for i in range(len(input_data)/(seq_length*50)):
-    #         inputs = [char_to_index[c] for c in input_data[i*seq_length:(i+1)*seq_length]]#inputs to the RNN
-    #         targets = [char_to_index[c] for c in input_data[i*seq_length+1:(i+1)*seq_length+1]]#the targets it should be outputting
-    #
-    #         if i % TEXT_SAMPLING_FREQUENCY==0:
-    #             sample_ix = sample([rnn1, rnn2, rnn3], inputs[0], 200, len(chars))
-    #             text = ''.join([index_to_char[n] for n in sample_ix])
-    #             output_file = open(output_dir, "a")
-    #             output_file.write("Iteration: " + str(iteration) + "\n")
-    #             output_file.write(text + "\n")
-    #             output_file.write("\n")
-    #             output_file.close()
-    #             losses.append(smooth_loss)
-    #
-    #         #forward pass
-    #         x = oneofk(inputs, len(chars))
-    #         y1, p1 = rnn1.step(x)
-    #         y2, p2 = rnn2.step(y1)
-    #         y3, p3 = rnn3.step(y2)
-    #
-    #         #calculate loss and error rate
-    #         loss = 0
-    #         error = 0
-    #         for t in range(len(targets)):
-    #             loss += -np.log(p3[t][targets[t],0])
-    #             if np.argmax(p3[t]) != targets[t]:
-    #                 error += 1
-    #         smooth_loss = smooth_loss*0.999 + loss*0.001
-    #         smooth_error = smooth_error*0.999 + error*0.001
-    #
-    #         if i%10==0:
-    #             print i,"\tsmooth loss =",smooth_loss,"\tsmooth error rate =",float(smooth_error)/len(targets)
-    #
-    #         #backward pass
-    #         dy = logprobs(p3, targets)
-    #         dx3 = rnn3.backprop(dy)
-    #         dx2 = rnn2.backprop(dx3)
-    #         dx1 = rnn1.backprop(dx2)
 
 
 def plot(data, y_label):
@@ -286,41 +236,37 @@ def plot(data, y_label):
     plt.savefig(dir + "/" + y_label + ".png", bbox_inches="tight")
     plt.close()
 
-#let the RNN generate text
-def sample(rnns, seed, n, k):
-
-    ndxs = []
-    ndx = seed
-
-    for t in range(n):
-        x = oneofk([ndx], k)
+def sample_text(rnns, seed, iteration):
+    indices = []
+    index = seed
+    for t in range(TEXT_SAMPLE_LENGTH):
+        x = one_of_k([index], vocabulary_size)
         for i in range(len(rnns)):
             x, p = rnns[i].step(x)
+        index = np.random.choice(range(len(p[0])), p=p[0].ravel())
+        indices.append(index)
 
-        ndx = np.random.choice(range(len(p[0])), p=p[0].ravel())
-        ndxs.append(ndx)
+    text = ''.join([index_to_char[n] for n in indices])
+    output_file = open(output_dir, "a")
+    output_file.write("Iteration: " + str(iteration) + "\n")
+    output_file.write(text + "\n")
+    output_file.write("\n")
+    output_file.close()
 
-    return ndxs
-
-#I have these out here because it's not really the RNN's concern how you transform
-#things to a form it can understand
-
-#get the initial dy to pass back through the first layer
 def logprobs(p, targets):
     dy = {}
     for t in range(len(targets)):
-        #see http://cs231n.github.io/neural-networks-case-study/#grad if confused here
         dy[t] = np.copy(p[t])
         dy[t][targets[t]] -= 1
     return dy
 
-#encode inputs in 1-of-k so they match inputs between layers
-def oneofk(inputs, k):
+def one_of_k(inputs, k):
     x = {}
     for t in range(len(inputs)):
-        x[t] = np.zeros((k, 1))#initialize x input to 1st hidden layer
-        x[t][inputs[t]] = 1#it's encoded in 1-of-k representation
+        x[t] = np.zeros((k, 1))
+        x[t][inputs[t]] = 1
     return x
 
+
 if __name__ == "__main__":
-    test()
+    rnn()

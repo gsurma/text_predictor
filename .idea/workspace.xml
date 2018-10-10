@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74640e70-8604-4725-8cc1-44c73600bdb5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/text_predictor2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/password_cracker_icon_web.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/text_predictor_icon_web_300.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/hackernews/error.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/hackernews/error.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/hackernews/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/hackernews/loss.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/hackernews/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/hackernews/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/reuters/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/reuters/loss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/reuters/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/reuters/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/shakespeare/loss.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/shakespeare/output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/shakespeare/small_input.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wikipedia/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/wikipedia/loss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wikipedia/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/wikipedia/output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_predictor2.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_predictor2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +24,8 @@
       <file leaf-file-name="text_predictor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/text_predictor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="135" column="4" lean-forward="true" selection-start-line="135" selection-start-column="4" selection-end-line="135" selection-end-column="20" />
+            <state relative-caret-position="428">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="56" selection-end-column="125" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -46,8 +36,8 @@
       <file leaf-file-name="text_predictor2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/text_predictor2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="223" column="46" lean-forward="true" selection-start-line="223" selection-start-column="46" selection-end-line="223" selection-end-column="46" />
+            <state relative-caret-position="355">
+              <caret line="72" selection-start-line="72" selection-end-line="82" selection-end-column="43" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -111,6 +101,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>learning_rate</find>
       <find>targets</find>
     </findStrings>
   </component>
@@ -273,11 +264,12 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32977778" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.10755555" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19288889" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15867944" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.4862222" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -288,7 +280,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32977778" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,8 +640,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/text_predictor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="135" column="4" lean-forward="true" selection-start-line="135" selection-start-column="4" selection-end-line="135" selection-end-column="20" />
+        <state relative-caret-position="428">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="56" selection-end-column="125" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -659,8 +650,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/text_predictor2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="223" column="46" lean-forward="true" selection-start-line="223" selection-start-column="46" selection-end-line="223" selection-end-column="46" />
+        <state relative-caret-position="355">
+          <caret line="72" selection-start-line="72" selection-end-line="82" selection-end-column="43" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
