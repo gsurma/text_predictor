@@ -1,7 +1,7 @@
 from __future__ import print_function
 import argparse
 import tensorflow as tf
-from utils import TextLoader
+from data_loader import DataLoader
 from model import Model
 
 parser = argparse.ArgumentParser(
@@ -39,7 +39,7 @@ args = parser.parse_args()
 
 
 def train(args):
-    data_loader = TextLoader(args.data_dir, args.batch_size, args.seq_length)
+    data_loader = DataLoader(args.data_dir, args.batch_size, args.seq_length)
     args.vocab_size = data_loader.vocab_size
 
     model = Model(args)
@@ -54,7 +54,7 @@ def train(args):
                                args.learning_rate * (args.decay_rate ** e)))
             data_loader.reset_batch_pointer()
             state = sess.run(model.initial_state)
-            for b in range(data_loader.num_batches):
+            for b in range(data_loader.batches_size):
                 x, y = data_loader.next_batch()
                 feed = {model.input_data: x, model.targets: y}
                 for i, (c, h) in enumerate(model.initial_state):
@@ -62,10 +62,10 @@ def train(args):
                     feed[h] = state[i].h
 
                 _, train_loss, state, _ = sess.run([summaries, model.cost, model.final_state, model.train_op], feed)
-                iteration = e * data_loader.num_batches + b
+                iteration = e * data_loader.batches_size + b
                 print("{}/{} (epoch {}), train_loss = {:.3f}"
                       .format(iteration,
-                              args.num_epochs * data_loader.num_batches,
+                              args.num_epochs * data_loader.batches_size,
                               e, train_loss))
                 if iteration % 1000 == 0:
                     sample(sess, args, data_loader.chars, data_loader.vocab)

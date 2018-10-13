@@ -1,82 +1,102 @@
 from __future__ import print_function
-import argparse
 import tensorflow as tf
-from utils import TextLoader
+from data_loader import DataLoader
 from model import Model
+import sys
+import matplotlib
+import numpy as np
+from statistics import mean
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 
-parser = argparse.ArgumentParser(
-                    formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-# Data and model checkpoints directories
-parser.add_argument('--data_dir', type=str, default='data/sherlock',
-                    help='data directory containing input.txt with training examples')
+# Args
+if len(sys.argv) != 2:
+    print("Please select a dataset.")
+    print("Usage: python text_predictor.py <dataset>")
+    print("Available datasets: shakespeare, wikipedia, reuters, hackernews, wikipedia, war_and_peace")
+    exit(1)
+else:
+    dataset = sys.argv[1]
+print("Selected dataset: " + str(dataset))
 
-SAVE_DIR = "save"
+
+# I/O
+data_dir = "./data/" + dataset
+input_file = data_dir + "/input.txt"
+
+output_file = data_dir + "/output.txt"
+output = open(output_file, "w")
+output.close()
+
+# Hyperparams
 SAMPLE_LENGTH = 500
+SAMPLING_FREQUENCY = 1000
+LOGGING_FREQUENCY = 1000
+BATCH_SIZE = 50
+SEQUENCE_LENGTH = 50
+LEARNING_RATE = 0.02
+DECAY_RATE = 0.97
 
-parser.add_argument('--model', type=str, default='lstm',
-                    help='lstm, rnn, gru, or nas')
-parser.add_argument('--rnn_size', type=int, default=128,
-                    help='size of RNN hidden state')
-parser.add_argument('--num_layers', type=int, default=2,
-                    help='number of layers in the RNN')
-# Optimization
-parser.add_argument('--seq_length', type=int, default=50,
-                    help='RNN sequence length. Number of timesteps to unroll for.')
-parser.add_argument('--batch_size', type=int, default=50,
-                    help="""minibatch size. Number of sequences propagated through the network in parallel.
-                            Pick batch-sizes to fully leverage the GPU (e.g. until the memory is filled up)
-                            commonly in the range 10-500.""")
-parser.add_argument('--num_epochs', type=int, default=50,
-                    help='number of epochs. Number of full passes through the training examples.')
-parser.add_argument('--grad_clip', type=float, default=5.,
-                    help='clip gradients at this value')
-parser.add_argument('--learning_rate', type=float, default=0.002,
-                    help='learning rate')
-parser.add_argument('--decay_rate', type=float, default=0.97,
-                    help='decay rate for rmsprop')
-
-args = parser.parse_args()
-
-
-def train(args):
-    data_loader = TextLoader(args.data_dir, args.batch_size, args.seq_length)
-    args.vocab_size = data_loader.vocab_size
-
-    model = Model(args)
+def rnn():
+    data_loader = DataLoader(data_dir, BATCH_SIZE, SEQUENCE_LENGTH)
+    model = Model(data_loader.vocab_size, batch_size=BATCH_SIZE, sequence_length=SEQUENCE_LENGTH)
 
     with tf.Session() as sess:
 
-        summaries = tf.summary.merge_all()
+        summaries = tf.summary.merge_all() #TODO: needed?
         sess.run(tf.global_variables_initializer())
 
-        for e in range(args.num_epochs):
-            sess.run(tf.assign(model.lr,
-                               args.learning_rate * (args.decay_rate ** e)))
+        epoch = 0
+        temp_losses = []
+        smooth_losses = []
+
+        while True:
+            sess.run(tf.assign(model.learning_rate, LEARNING_RATE * (DECAY_RATE ** epoch)))
             data_loader.reset_batch_pointer()
             state = sess.run(model.initial_state)
-            for b in range(data_loader.num_batches):
-                x, y = data_loader.next_batch()
-                feed = {model.input_data: x, model.targets: y}
+            for batch in range(data_loader.batches_size):
+                input, output = data_loader.next_batch()
+                feed = {model.input_data: input, model.targets: output}
                 for i, (c, h) in enumerate(model.initial_state):
                     feed[c] = state[i].c
                     feed[h] = state[i].h
 
-                _, train_loss, state, _ = sess.run([summaries, model.cost, model.final_state, model.train_op], feed)
-                iteration = e * data_loader.num_batches + b
-                print("{}/{} (epoch {}), train_loss = {:.3f}"
-                      .format(iteration,
-                              args.num_epochs * data_loader.num_batches,
-                              e, train_loss))
-                if iteration % 1000 == 0:
-                    sample(sess, args, data_loader.chars, data_loader.vocab)
+                _, loss, state, _ = sess.run([summaries, model.cost, model.final_state, model.train_op], feed)
+                temp_losses.append(loss)
 
-def sample(sess, args, chars, vocab):
-    model = Model(args, training=False)
-    print(model.sample(sess, chars, vocab, SAMPLE_LENGTH, chars[0]).encode('utf-8'))
+                iteration = epoch * data_loader.batches_size + batch
+
+                if iteration % SAMPLING_FREQUENCY == 0:
+                    sample_text(sess, data_loader, iteration)
+
+                if iteration % LOGGING_FREQUENCY == 0:
+                    print("Iteration: {}, epoch: {}, loss: {:.3f}".format(iteration, epoch, loss))
+                    m = np.mean(temp_losses)
+                    smooth_losses.append(m)
+                    temp_losses = []
+                    plot(smooth_losses, "loss")
+            epoch += 1
+
+def sample_text(sess, data_loader, iteration):
+    model = Model(data_loader.vocab_size, batch_size=BATCH_SIZE, sequence_length=SEQUENCE_LENGTH, training=False)
+    text = model.sample(sess, data_loader.chars, data_loader.vocab, SAMPLE_LENGTH, data_loader.chars[0]).encode('utf-8')
+    output = open(output_file, "a")
+    output.write("Iteration: " + str(iteration) + "\n")
+    output.write(text + "\n")
+    output.write("\n")
+    output.close()
+
+def plot(data, y_label):
+    plt.plot(range(len(data)), data)
+    plt.title(dataset)
+    plt.xlabel("iterations (thousands)")
+    plt.ylabel(y_label)
+    plt.savefig(data_dir + "/" + y_label + ".png", bbox_inches="tight")
+    plt.close()
 
 
 if __name__ == '__main__':
-    train(args)
+    rnn()
 
 
 
