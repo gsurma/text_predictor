@@ -36,7 +36,7 @@ HIDDEN_LAYER_SIZE = 512
 SEQUENCE_LENGTH = 20
 LEARNING_RATE = 0.001
 ADAGRAD_UPDATE_RATE = 1e-8
-LOGGING_FREQUENCY = 10
+LOGGING_FREQUENCY = 1000
 TEXT_SAMPLING_FREQUENCY = 1000
 GRADIENT_LIMIT = 5
 RANDOM_WEIGHT_INIT_FACTOR = 1e-2
@@ -44,17 +44,17 @@ LOSS_SMOOTHING_FACTOR = 0.999
 TEXT_SAMPLE_LENGTH = 200
 
 
-class RNNLayerModel:
-
-    def __init__(self, random_init=False):
-        self.input_to_hidden = (np.random.randn(HIDDEN_LAYER_SIZE, vocabulary_size) * RANDOM_WEIGHT_INIT_FACTOR) if random_init else np.zeros((HIDDEN_LAYER_SIZE, vocabulary_size))
-        self.hidden_to_hidden = (np.random.randn(HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE) * RANDOM_WEIGHT_INIT_FACTOR) if random_init else np.zeros((HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE))
-        self.hidden_to_output = (np.random.randn(vocabulary_size, HIDDEN_LAYER_SIZE) * RANDOM_WEIGHT_INIT_FACTOR) if random_init else np.zeros((vocabulary_size, HIDDEN_LAYER_SIZE))
-        self.hidden_bias = np.zeros((HIDDEN_LAYER_SIZE, 1))
-        self.output_bias = np.zeros((vocabulary_size, 1))
-
-    def __iter__(self):
-        return iter([self.input_to_hidden, self.hidden_to_hidden, self.hidden_to_output, self.hidden_bias, self.output_bias])
+# class RNNSubLayer:
+#
+#     def __init__(self, random_init=False):
+#         self.input_to_hidden = (np.random.randn(HIDDEN_LAYER_SIZE, vocabulary_size) * RANDOM_WEIGHT_INIT_FACTOR) if random_init else np.zeros((HIDDEN_LAYER_SIZE, vocabulary_size))
+#         self.hidden_to_hidden = (np.random.randn(HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE) * RANDOM_WEIGHT_INIT_FACTOR) if random_init else np.zeros((HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE))
+#         self.hidden_to_output = (np.random.randn(vocabulary_size, HIDDEN_LAYER_SIZE) * RANDOM_WEIGHT_INIT_FACTOR) if random_init else np.zeros((vocabulary_size, HIDDEN_LAYER_SIZE))
+#         self.hidden_bias = np.zeros((HIDDEN_LAYER_SIZE, 1))
+#         self.output_bias = np.zeros((vocabulary_size, 1))
+#
+#     def __iter__(self):
+#         return iter([self.input_to_hidden, self.hidden_to_hidden, self.hidden_to_output, self.hidden_bias, self.output_bias])
 
 
 class RNNLayer:
@@ -66,9 +66,9 @@ class RNNLayer:
         self.h = {}
         self.h_last = np.zeros((h_size, 1))
 
-        self.base = RNNLayerModel(random_init=True)
-        self.memory = RNNLayerModel()
-        self.gradient = RNNLayerModel()
+        # self.base = RNNSubLayer(random_init=True)
+        # self.memory = RNNSubLayer()
+        # self.gradient = RNNSubLayer()
 
         self.W_xh = np.random.randn(h_size, x_size)*RANDOM_WEIGHT_INIT_FACTOR
         self.W_hh = np.random.randn(h_size, h_size)*RANDOM_WEIGHT_INIT_FACTOR
@@ -94,7 +94,7 @@ class RNNLayer:
     #                    ^                                 |
     #                    '----h_next------[W_hh]-----------'
     #
-    def step(self, x):
+    def forward_pass(self, x):
         #load the last state from the last batch in to the beginning of h
         #it is necessary to save it outside of h because h is used in backprop
         self.h[-1] = self.h_last
@@ -103,9 +103,6 @@ class RNNLayer:
         y = {}
         p = {}#p[t] = the probabilities of next chars given chars passed in at times <=t
         for t in range(len(self.x)):#for each moment in time
-
-            #self.h[t] = np.maximum(0, np.dot(self.W_xh, self.xhat[t]) + \
-            #   np.dot(self.W_hh, self.h[t-1]) + self.b_h)#ReLU
 
             #find new hidden state in this layer at this time
             self.h[t] = np.tanh(np.dot(self.W_xh, self.x[t]) + \
@@ -122,7 +119,7 @@ class RNNLayer:
 
     #given the RNN a sequence of correct outputs (seq_length long), use
     #them and the internal state to adjust weights
-    def backprop(self, dy):
+    def backward_pass(self, dy):
 
         #we will need some place to store gradients
         dW_xh = np.zeros_like(self.W_xh)
@@ -135,6 +132,18 @@ class RNNLayer:
         dx = {}
 
         for t in reversed(range(len(dy))):
+        #     dy = np.copy(ps[t])
+        #     dy[targets[t]] -= 1  # backprop into y. see http://cs231n.github.io/neural-networks-case-study/#grad if confused here
+        #     dWhy += np.dot(dy, hs[t].T)
+        #     dby += dy
+        #     dh = np.dot(Why.T, dy) + dhnext  # backprop into h
+        #     dhraw = (1 - hs[t] * hs[t]) * dh  # backprop through tanh nonlinearity
+        #     dbh += dhraw
+        #     dWxh += np.dot(dhraw, xs[t].T)
+        #     dWhh += np.dot(dhraw, hs[t - 1].T)
+        #     dhnext = np.dot(Whh.T, dhraw)
+        # for dparam in [dWxh, dWhh, dWhy, dbh, dby]:
+        #     np.clip(dparam, -5, 5, out=dparam)  # clip to mitigate exploding gradients
             #find updates for y stuff
             dW_hy += np.dot(dy[t], self.h[t].T)
             db_y += dy[t]
@@ -142,7 +151,6 @@ class RNNLayer:
             #backprop into h and through nonlinearity
             dh = np.dot(self.W_hy.T, dy[t]) + dh_next
             dh_raw = (1 - self.h[t]**2)*dh#tanh
-            #dh_raw = self.h[t][self.h[t] <= 0] = 0#ReLU
 
             #find updates for h stuff
             dW_xh += np.dot(dh_raw, self.x[t].T)
@@ -157,9 +165,7 @@ class RNNLayer:
 
         #clip to mitigate exploding gradients
         for dparam in [dW_xh, dW_hh, dW_hy, db_h, db_y]:
-            dparam = np.clip(dparam, -GRADIENT_LIMIT, GRADIENT_LIMIT)
-        for t in range(len(dx)):
-            dx[t] = np.clip(dx[t], -GRADIENT_LIMIT, GRADIENT_LIMIT)
+            np.clip(dparam, -GRADIENT_LIMIT, GRADIENT_LIMIT, out=dparam)
 
         for param, dparam, adaparam in zip([self.W_hh, self.W_xh, self.W_hy, self.b_h, self.b_y], \
                                             [dW_hh, dW_xh, dW_hy, db_h, db_y], \
@@ -175,9 +181,7 @@ def rnn():
     rnn3 = RNNLayer(HIDDEN_LAYER_SIZE, HIDDEN_LAYER_SIZE, vocabulary_size)
 
     smooth_loss = None
-    smooth_error = None
     smooth_losses = []
-    smooth_errors = []
 
     resets = 0
     iteration = 0
@@ -187,6 +191,9 @@ def rnn():
         if data_pointer + SEQUENCE_LENGTH + 1 >= len(input_data) or iteration == 0:
             resets += 1
             data_pointer = 0
+            rnn1.h_last = np.zeros((rnn1.h_size, 1))
+            rnn2.h_last = np.zeros((rnn2.h_size, 1))
+            rnn3.h_last = np.zeros((rnn3.h_size, 1))
             print('{{"metric": "reset", "value": {}}}'.format(resets))
         inputs = [char_to_index[char] for char in input_data[data_pointer:data_pointer + SEQUENCE_LENGTH]]
         targets = [char_to_index[char] for char in input_data[data_pointer + 1:data_pointer + SEQUENCE_LENGTH + 1]]
@@ -196,33 +203,27 @@ def rnn():
 
         # Forward pass
         x = one_of_k(inputs, len(chars))
-        y1, p1 = rnn1.step(x)
-        y2, p2 = rnn2.step(y1)
-        y3, p3 = rnn3.step(y2)
+        y1, p1 = rnn1.forward_pass(x)
+        y2, p2 = rnn2.forward_pass(y1)
+        y3, p3 = rnn3.forward_pass(y2)
 
         loss = 0
-        error = 0
         for t in range(len(targets)):
             loss += -np.log(p3[t][targets[t], 0])
-            if np.argmax(p3[t]) != targets[t]:
-                error += 1
-        smooth_loss = loss if smooth_loss is None else smooth_loss * 0.999 + loss * 0.001
-        smooth_error = error if smooth_error is None else smooth_error * 0.999 + error * 0.001
-        smooth_losses.append(smooth_loss)
-        smooth_errors.append(smooth_error)
+
+        smooth_loss = loss if smooth_loss is None else smooth_loss * LOSS_SMOOTHING_FACTOR + loss * (1-LOSS_SMOOTHING_FACTOR)
 
         if iteration % LOGGING_FREQUENCY == 0:
+            smooth_losses.append(smooth_loss)
             plot(smooth_losses, "loss")
-            plot(smooth_errors, "error")
             print('{{"metric": "iteration", "value": {}}}'.format(iteration))
             print('{{"metric": "smooth_loss", "value": {}}}'.format(smooth_loss))
-            print('{{"metric": "smooth_error", "value": {}}}'.format(smooth_error))
 
         # Backward pass
         dy = logprobs(p3, targets)
-        dx3 = rnn3.backprop(dy)
-        dx2 = rnn2.backprop(dx3)
-        dx1 = rnn1.backprop(dx2)
+        dx3 = rnn3.backward_pass(dy)
+        dx2 = rnn2.backward_pass(dx3)
+        dx1 = rnn1.backward_pass(dx2)
 
         data_pointer += SEQUENCE_LENGTH
         iteration += 1
@@ -231,7 +232,7 @@ def rnn():
 def plot(data, y_label):
     plt.plot(range(len(data)), data)
     plt.title(dataset)
-    plt.xlabel("iterations")
+    plt.xlabel("iterations (thousands)")
     plt.ylabel(y_label)
     plt.savefig(dir + "/" + y_label + ".png", bbox_inches="tight")
     plt.close()
@@ -242,10 +243,9 @@ def sample_text(rnns, seed, iteration):
     for t in range(TEXT_SAMPLE_LENGTH):
         x = one_of_k([index], vocabulary_size)
         for i in range(len(rnns)):
-            x, p = rnns[i].step(x)
+            x, p = rnns[i].forward_pass(x)
         index = np.random.choice(range(len(p[0])), p=p[0].ravel())
         indices.append(index)
-
     text = ''.join([index_to_char[n] for n in indices])
     output_file = open(output_dir, "a")
     output_file.write("Iteration: " + str(iteration) + "\n")
