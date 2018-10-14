@@ -40,8 +40,8 @@ LOGGING_FREQUENCY = 1000
 
 
 def rnn():
-    data_loader = DataProvider(data_dir, BATCH_SIZE, SEQUENCE_LENGTH)
-    model = RNNModel(data_loader.vocabulary_size, batch_size=BATCH_SIZE, sequence_length=SEQUENCE_LENGTH, hidden_layer_size=HIDDEN_LAYER_SIZE, cells_size=CELLS_SIZE)
+    data_provider = DataProvider(data_dir, BATCH_SIZE, SEQUENCE_LENGTH)
+    model = RNNModel(data_provider.vocabulary_size, batch_size=BATCH_SIZE, sequence_length=SEQUENCE_LENGTH, hidden_layer_size=HIDDEN_LAYER_SIZE, cells_size=CELLS_SIZE)
 
     with tf.Session() as sess:
 
@@ -56,22 +56,22 @@ def rnn():
 
         while True:
             sess.run(tf.assign(model.learning_rate, LEARNING_RATE * (DECAY_RATE ** epoch)))
-            data_loader.reset_batch_pointer()
+            data_provider.reset_batch_pointer()
             state = sess.run(model.initial_state)
-            for batch in range(data_loader.batches_size):
-                input, output = data_loader.next_batch()
+            for batch in range(data_provider.batches_size):
+                input, output = data_provider.next_batch()
                 feed = {model.input_data: input, model.targets: output}
                 for index, (c, h) in enumerate(model.initial_state):
                     feed[c] = state[index].c
                     feed[h] = state[index].h
 
-                iteration = epoch * data_loader.batches_size + batch
+                iteration = epoch * data_provider.batches_size + batch
                 summary, loss, state, _ = sess.run([summaries, model.cost, model.final_state, model.train_op], feed)
                 writer.add_summary(summary, iteration)
                 temp_losses.append(loss)
 
                 if iteration % SAMPLING_FREQUENCY == 0:
-                    sample_text(sess, data_loader, iteration)
+                    sample_text(sess, data_provider, iteration)
 
                 if iteration % LOGGING_FREQUENCY == 0:
                     print("Iteration: {}, epoch: {}, loss: {:.3f}".format(iteration, epoch, loss))
@@ -80,9 +80,9 @@ def rnn():
                     plot(smooth_losses, "loss")
             epoch += 1
 
-def sample_text(sess, data_loader, iteration):
-    model = RNNModel(data_loader.vocabulary_size, batch_size=1, sequence_length=1, hidden_layer_size=HIDDEN_LAYER_SIZE, cells_size=CELLS_SIZE, training=False)
-    text = model.sample(sess, data_loader.chars, data_loader.vocabulary, TEXT_SAMPLE_LENGTH, data_loader.chars[0]).encode('utf-8')
+def sample_text(sess, data_provider, iteration):
+    model = RNNModel(data_provider.vocabulary_size, batch_size=1, sequence_length=1, hidden_layer_size=HIDDEN_LAYER_SIZE, cells_size=CELLS_SIZE, training=False)
+    text = model.sample(sess, data_provider.chars, data_provider.vocabulary, TEXT_SAMPLE_LENGTH).encode('utf-8')
     output = open(output_file, "a")
     output.write("Iteration: " + str(iteration) + "\n")
     output.write(text + "\n")

@@ -68,31 +68,23 @@ class RNNModel:
         tf.summary.scalar("cost", self.cost)
         tf.summary.scalar("learning_rate", self.learning_rate)
 
-    def sample(self, sess, chars, vocab, num, prime):
+    def sample(self, sess, chars, vocabulary, length):
         state = sess.run(self.cell.zero_state(1, tf.float32))
-        for char in prime[:-1]:
+        text = ""
+        char = chars[0]
+        for _ in range(length):
             x = np.zeros((1, 1))
-            x[0, 0] = vocab[char]
+            x[0, 0] = vocabulary[char]
             feed = {self.input_data: x, self.initial_state: state}
-            [state] = sess.run([self.final_state], feed)
-
-        ret = prime
-        char = prime[-1]
-        for _ in range(num):
-            x = np.zeros((1, 1))
-            x[0, 0] = vocab[char]
-            feed = {self.input_data: x, self.initial_state: state}
-            [probs, state] = sess.run([self.probabilities, self.final_state], feed)
-            p = probs[0]
-
-            t = np.cumsum(p)
-            s = np.sum(p)
-            sample = int(np.searchsorted(t, np.random.rand(1) * s))
-
-            pred = chars[sample]
-            ret += pred
-            char = pred
-        return ret
+            [probabilities, state] = sess.run([self.probabilities, self.final_state], feed)
+            probability = probabilities[0]
+            total_sum = np.cumsum(probability)
+            sum = np.sum(probability)
+            sample = int(np.searchsorted(total_sum, np.random.rand(1) * sum))
+            predicted = chars[sample]
+            text += predicted
+            char = predicted
+        return text
 
 
 
