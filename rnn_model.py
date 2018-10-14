@@ -16,17 +16,16 @@ class RNNModel:
                  training=True):
 
         cells = []
-        for _ in range(cells_size):
-            cells.append(rnn.LSTMCell(hidden_layer_size))
+        [cells.append(rnn.LSTMCell(hidden_layer_size)) for _ in range(cells_size)]
         self.cell = rnn.MultiRNNCell(cells)
 
         self.input_data = tf.placeholder(tf.int32, [batch_size, sequence_length])
         self.targets = tf.placeholder(tf.int32, [batch_size, sequence_length])
         self.initial_state = self.cell.zero_state(batch_size, tf.float32)
 
-        with tf.variable_scope("rnnlm", reuse=tf.AUTO_REUSE):
-            softmax_layer = tf.get_variable("softmax_w", [hidden_layer_size, vocabulary_size])
-            softmax_bias = tf.get_variable("softmax_b", [vocabulary_size])
+        with tf.variable_scope("rnn", reuse=tf.AUTO_REUSE):
+            softmax_layer = tf.get_variable("softmax_layer", [hidden_layer_size, vocabulary_size])
+            softmax_bias = tf.get_variable("softmax_bias", [vocabulary_size])
 
         with tf.variable_scope("embedding", reuse=tf.AUTO_REUSE):
             embedding = tf.get_variable("embedding", [vocabulary_size, hidden_layer_size])
@@ -40,7 +39,7 @@ class RNNModel:
             previous_symbol = tf.stop_gradient(tf.argmax(previous, 1))
             return tf.nn.embedding_lookup(embedding, previous_symbol)
 
-        with tf.variable_scope("rnnlm", reuse=tf.AUTO_REUSE):
+        with tf.variable_scope("rnn", reuse=tf.AUTO_REUSE):
             outputs, last_state = legacy_seq2seq.rnn_decoder(inputs, self.initial_state, self.cell, loop_function=loop if not training else None)
             output = tf.reshape(tf.concat(outputs, 1), [-1, hidden_layer_size])
 
@@ -58,9 +57,8 @@ class RNNModel:
         grads, _ = tf.clip_by_global_norm(tf.gradients(self.cost, trainable_vars), gradient_clip)
 
         with tf.variable_scope("optimizer", reuse=tf.AUTO_REUSE):
-            with tf.name_scope("optimizer"):
-                optimizer = tf.train.AdamOptimizer(self.learning_rate)
-                self.train_op = optimizer.apply_gradients(zip(grads, trainable_vars))
+            optimizer = tf.train.AdamOptimizer(self.learning_rate)
+            self.train_op = optimizer.apply_gradients(zip(grads, trainable_vars))
 
         tf.summary.histogram("logits", self.logits)
         tf.summary.histogram("probabilitiess", self.probabilities)

@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 if len(sys.argv) != 2:
     print "Please select a dataset."
     print "Usage: python text_predictor.py <dataset>"
-    print "Available datasets: shakespeare, wikipedia, reuters, hackernews, wikipedia, war_and_peace, sherlock"
+    print "Available datasets: shakespeare, wikipedia, reuters, hackernews, war_and_peace, sherlock"
     exit(1)
 else:
     dataset = sys.argv[1]
@@ -59,12 +59,11 @@ def rnn():
             data_provider.reset_batch_pointer()
             state = sess.run(model.initial_state)
             for batch in range(data_provider.batches_size):
-                input, output = data_provider.next_batch()
-                feed = {model.input_data: input, model.targets: output}
+                inputs, targets = data_provider.next_batch()
+                feed = {model.input_data: inputs, model.targets: targets}
                 for index, (c, h) in enumerate(model.initial_state):
                     feed[c] = state[index].c
                     feed[h] = state[index].h
-
                 iteration = epoch * data_provider.batches_size + batch
                 summary, loss, state, _ = sess.run([summaries, model.cost, model.final_state, model.train_op], feed)
                 writer.add_summary(summary, iteration)
@@ -74,25 +73,28 @@ def rnn():
                     sample_text(sess, data_provider, iteration)
 
                 if iteration % LOGGING_FREQUENCY == 0:
-                    print("Iteration: {}, epoch: {}, loss: {:.3f}".format(iteration, epoch, loss))
-                    smooth_losses.append(np.mean(temp_losses))
+                    smooth_loss = np.mean(temp_losses)
+                    smooth_losses.append(smooth_loss)
                     temp_losses = []
-                    plot(smooth_losses, "loss")
+                    plot(smooth_losses, "iterations (thousands)", "loss")
+                    print('{{"metric": "iteration", "value": {}}}'.format(iteration))
+                    print('{{"metric": "epoch", "value": {}}}'.format(epoch))
+                    print('{{"metric": "loss", "value": {}}}'.format(smooth_loss))
             epoch += 1
 
 def sample_text(sess, data_provider, iteration):
     model = RNNModel(data_provider.vocabulary_size, batch_size=1, sequence_length=1, hidden_layer_size=HIDDEN_LAYER_SIZE, cells_size=CELLS_SIZE, training=False)
-    text = model.sample(sess, data_provider.chars, data_provider.vocabulary, TEXT_SAMPLE_LENGTH).encode('utf-8')
+    text = model.sample(sess, data_provider.chars, data_provider.vocabulary, TEXT_SAMPLE_LENGTH).encode("utf-8")
     output = open(output_file, "a")
     output.write("Iteration: " + str(iteration) + "\n")
     output.write(text + "\n")
     output.write("\n")
     output.close()
 
-def plot(data, y_label):
+def plot(data, x_label, y_label):
     plt.plot(range(len(data)), data)
     plt.title(dataset)
-    plt.xlabel("iterations (thousands)")
+    plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.savefig(data_dir + "/" + y_label + ".png", bbox_inches="tight")
     plt.close()

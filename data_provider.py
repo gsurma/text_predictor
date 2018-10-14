@@ -23,12 +23,12 @@ class DataProvider:
 
         self.tensor = self.tensor[:self.batches_size * self.batch_size * self.sequence_length]
         inputs = self.tensor
-        outputs = np.copy(self.tensor)
+        targets = np.copy(self.tensor)
 
-        outputs[:-1] = inputs[1:]
-        outputs[-1] = inputs[0]
+        targets[:-1] = inputs[1:]
+        targets[-1] = inputs[0]
         self.input_batches = np.split(inputs.reshape(self.batch_size, -1), self.batches_size, 1)
-        self.output_batches = np.split(outputs.reshape(self.batch_size, -1), self.batches_size, 1)
+        self.target_batches = np.split(targets.reshape(self.batch_size, -1), self.batches_size, 1)
         print "Tensor size: " + str(self.tensor.size)
         print "Batch size: " + str(self.batch_size)
         print "Sequence length: " + str(self.sequence_length)
@@ -37,9 +37,9 @@ class DataProvider:
 
     def next_batch(self):
         inputs = self.input_batches[self.pointer]
-        outputs = self.output_batches[self.pointer]
+        targets = self.target_batches[self.pointer]
         self.pointer += 1
-        return inputs, outputs
+        return inputs, targets
 
     def reset_batch_pointer(self):
         self.pointer = 0
