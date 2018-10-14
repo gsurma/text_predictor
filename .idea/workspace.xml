@@ -2,18 +2,136 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74640e70-8604-4725-8cc1-44c73600bdb5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/data_loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_provider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/shakespeare/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/shakespeare/loss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/shakespeare/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/shakespeare/output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/hackernews/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/hackernews/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/hackernews/loss.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/hackernews/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/hackernews/output.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sherlock/data.npy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sherlock/vocab.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wikipedia/error.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/wikipedia/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/wikipedia/loss.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/wikipedia/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/wikipedia/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/text_predictor3.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_predictor3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-26-04/events.out.tfevents.1539455165.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-27-31/events.out.tfevents.1539455252.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-30-02/events.out.tfevents.1539455403.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-32-44/events.out.tfevents.1539455565.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-35-49/events.out.tfevents.1539455750.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-36-55/events.out.tfevents.1539455816.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-39-54/events.out.tfevents.1539455995.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-41-02/events.out.tfevents.1539456063.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-42-34/events.out.tfevents.1539456155.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-11-46-28/events.out.tfevents.1539456389.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-11-59/events.out.tfevents.1539457919.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-14-58/events.out.tfevents.1539458099.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-15-49/events.out.tfevents.1539458150.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-20-46/events.out.tfevents.1539458446.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-21-25/events.out.tfevents.1539458485.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-22-22/events.out.tfevents.1539458542.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-23-34/events.out.tfevents.1539458615.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-25-24/events.out.tfevents.1539458724.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-28-52/events.out.tfevents.1539458933.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-32-21/events.out.tfevents.1539459142.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-33-17/events.out.tfevents.1539459197.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-38-31/events.out.tfevents.1539459512.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-40-02/events.out.tfevents.1539459602.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-42-02/events.out.tfevents.1539459722.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-43-22/events.out.tfevents.1539459803.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-48-29/events.out.tfevents.1539460110.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-49-43/events.out.tfevents.1539460183.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-50-18/events.out.tfevents.1539460219.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-51-04/events.out.tfevents.1539460265.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-12-56-37/events.out.tfevents.1539460598.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-01-04/events.out.tfevents.1539460865.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-05-04/events.out.tfevents.1539461105.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-07-24/events.out.tfevents.1539461245.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-09-57/events.out.tfevents.1539461397.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-11-32/events.out.tfevents.1539461492.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-12-27/events.out.tfevents.1539461547.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-13-27/events.out.tfevents.1539461608.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-14-59/events.out.tfevents.1539461700.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-22-43/events.out.tfevents.1539462164.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-25-03/events.out.tfevents.1539462304.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-26-13/events.out.tfevents.1539462374.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-32-43/events.out.tfevents.1539462763.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-37-40/events.out.tfevents.1539463060.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-39-24/events.out.tfevents.1539463164.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-41-28/events.out.tfevents.1539463288.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-42-28/events.out.tfevents.1539463349.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-43-21/events.out.tfevents.1539463402.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-48-41/events.out.tfevents.1539463721.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-49-39/events.out.tfevents.1539463779.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-50-57/events.out.tfevents.1539463857.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-51-56/events.out.tfevents.1539463917.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-54-58/events.out.tfevents.1539464099.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-13-59-50/events.out.tfevents.1539464390.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-14-01-30/events.out.tfevents.1539464491.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-14-05-43/events.out.tfevents.1539464744.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-14-07-32/events.out.tfevents.1539464853.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2018-10-13-14-16-22/events.out.tfevents.1539465383.MacBook-Pro-2.local" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/rnn_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/chars_vocab.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/config.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/model.ckpt-0.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/model.ckpt-0.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/model.ckpt-0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/model.ckpt-1000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/model.ckpt-1000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/model.ckpt-1000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/model.ckpt-2000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/model.ckpt-2000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/model.ckpt-2000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/2M_checkpoint/hackernews/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/2M_checkpoint/hackernews/output-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/2M_checkpoint/reuters/loss copy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/2M_checkpoint/war_and_peace/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/2M_checkpoint/war_and_peace/output-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/2M_checkpoint/wikipedia/loss copy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/4M_checkpoint/hackernews/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/4M_checkpoint/hackernews/output-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/4M_checkpoint/war_and_peace/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/4M_checkpoint/war_and_peace/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/hackernews/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/hackernews/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/hackernews/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/reuters/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/reuters/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/reuters/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/shakespeare/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/war_and_peace/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/war_and_peace/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/wikipedia/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/wikipedia/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/data copy/wikipedia/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/hackernews_backup/100/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/reuters_backup/300/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_layer_rnn/war_and_peace/100/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_predictor2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_predictor3.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_predictor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/hackernews/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/hackernews/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/hackernews/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/hackernews/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/reuters/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/reuters/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/reuters/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/reuters/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/shakespeare/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/shakespeare/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/shakespeare/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/sherlock/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/war_and_peace/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/war_and_peace/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/war_and_peace/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/wikipedia/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/wikipedia/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/wikipedia/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/triple_layer_rnn/data copy/wikipedia/output.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,23 +147,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="text_predictor2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/text_predictor2.py">
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train.py">
+      <file leaf-file-name="text_predictor.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/text_predictor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="58" column="47" selection-end-line="103" />
+            <state relative-caret-position="390">
+              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -53,23 +168,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="text_predictor3.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/text_predictor3.py">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Python/2.7/site-packages/tensorflow/summary/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="14" lean-forward="true" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_loader.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_loader.py">
+      <file leaf-file-name="session.py" pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/client/session.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+            <state relative-caret-position="692">
+              <caret line="789" column="21" selection-start-line="789" selection-start-column="21" selection-end-line="789" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_provider.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_provider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -80,17 +201,17 @@
       <file leaf-file-name="summary.py" pinned="false" current-in-tab="false">
         <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/summary/summary.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="287" column="36" selection-start-line="287" selection-start-column="36" selection-end-line="287" selection-end-column="36" />
+            <state relative-caret-position="359">
+              <caret line="287" column="4" selection-start-line="287" selection-start-column="4" selection-end-line="287" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model.py">
+      <file leaf-file-name="rnn_model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rnn_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="76" column="35" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
+            <state relative-caret-position="920">
+              <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -98,38 +219,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adam.py" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/training/adam.py">
+      <file leaf-file-name="math_ops.py" pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/ops/math_ops.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="366">
-              <caret line="39" column="6" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
+              <caret line="1836" column="4" selection-start-line="1836" selection-start-column="4" selection-end-line="1836" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="optimizer.py" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/training/optimizer.py">
+      <file leaf-file-name="rnn_cell_impl.py" pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/ops/rnn_cell_impl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="519" column="6" selection-start-line="519" selection-start-column="6" selection-end-line="519" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ops.py" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/framework/ops.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="5947" column="6" selection-start-line="5947" selection-start-column="6" selection-end-line="5947" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="seq2seq.py" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Python/2.7/site-packages/tensorflow/contrib/legacy_seq2seq/python/ops/seq2seq.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
+            <state relative-caret-position="359">
+              <caret line="661" column="6" selection-start-line="661" selection-start-column="6" selection-end-line="661" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -156,7 +259,11 @@
       <find>save_dir</find>
       <find>tf.get_variable</find>
       <find>lr</find>
+      <find>summary</find>
+      <find>umma</find>
+      <find>vocab</find>
       <find>next_batch</find>
+      <find>cell</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,15 +273,18 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/rnn.py" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/text_predictor.py" />
         <option value="$PROJECT_DIR$/text_predictor2.py" />
         <option value="$PROJECT_DIR$/tensorflow/char-rnn-tensorflow/sample.py" />
         <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/utils.py" />
-        <option value="$PROJECT_DIR$/data_loader.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/model.py" />
+        <option value="$PROJECT_DIR$/rnnmodel.py" />
+        <option value="$PROJECT_DIR$/utilities.py" />
         <option value="$PROJECT_DIR$/text_predictor3.py" />
+        <option value="$PROJECT_DIR$/data_loader.py" />
+        <option value="$PROJECT_DIR$/rnn_model.py" />
+        <option value="$PROJECT_DIR$/text_predictor.py" />
       </list>
     </option>
   </component>
@@ -207,17 +317,6 @@
             <path>
               <item name="text_predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="text_predictor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="text_predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="text_predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="tensorflow" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="text_predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="text_predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="tensorflow" type="462c0819:PsiDirectoryNode" />
-              <item name="char-rnn-tensorflow" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -344,7 +443,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.19288889" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16506922" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16506922" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.48533332" />
@@ -367,37 +466,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.1/python_stubs/348993582/numpy/core/umath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44730">
-          <caret line="2982" column="4" selection-start-line="2982" selection-start-column="4" selection-end-line="2982" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.1/python_stubs/348993582/numpy/random/mtrand.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31095">
-          <caret line="2077" column="4" selection-start-line="2077" selection-start-column="4" selection-end-line="2077" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.1/python_stubs/348993582/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8370">
-          <caret line="558" column="4" selection-start-line="558" selection-start-column="4" selection-end-line="558" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/text_predictor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="109" column="10" selection-start-line="109" selection-start-column="10" selection-end-line="109" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.1/python_stubs/348993582/numpy/core/multiarray.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37470">
@@ -609,13 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/text_predictor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1335">
@@ -681,39 +742,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/summary/summary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="287" column="36" selection-start-line="287" selection-start-column="36" selection-end-line="287" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
           <caret line="58" column="47" selection-end-line="103" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_loader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="35" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -728,10 +762,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/text_predictor3.py">
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="14" lean-forward="true" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+        <state relative-caret-position="30">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="692">
+          <caret line="789" column="21" selection-start-line="789" selection-start-column="21" selection-end-line="789" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/tensorflow/summary/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/summary/summary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="287" column="4" selection-start-line="287" selection-start-column="4" selection-end-line="287" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/ops/math_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="1836" column="4" selection-start-line="1836" selection-start-column="4" selection-end-line="1836" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/tensorflow/python/ops/rnn_cell_impl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="661" column="6" selection-start-line="661" selection-start-column="6" selection-end-line="661" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_provider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rnn_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/text_predictor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
