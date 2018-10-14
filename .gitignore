@@ -107,3 +107,10 @@ rnn_k.py
 
 *.local
 
+/data/reuters/tensorboard
+/data/hackernews/tensorboard
+/data/wikipedia/tensorboard
+/data/sherlock/tensorboard
+/data/darwin/tensorboard
+/data/shakespeare/tensorboard
+/data/war_and_peace/tensorboard
