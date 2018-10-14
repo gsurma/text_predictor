@@ -42,9 +42,6 @@ Each dataset were trained with the same hyperparameters for ~100 k iterations wh
 	CELLS_SIZE = 2
 
 
-### Shakespeare
-<img src="data/shakespeare/loss.png" width="500">
-
 
 ### Sherlock
 <img src="data/sherlock/loss.png" width="500">
@@ -87,13 +84,6 @@ Iteration: 100000
      There was no mystery for y
 
 <br>
-### Wikipedia
-<img src="data/wikipedia/loss.png" width="500">
-
-
-### Reuters
-<img src="data/reuters/loss.png" width="500">
-
 
 ### Hackernews
 <img src="data/hackernews/loss.png" width="500">
@@ -139,7 +129,6 @@ Iteration: 100000
 	Shot-sizzations of catV; Google - Way Domer Sacks Not Auto-accounts
 	Amit Gupta needs is moving
 
+<br>
 
-### War and Peace
-<img src="data/war_and_peace/loss.png" width="500">
 
