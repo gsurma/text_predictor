@@ -4,8 +4,7 @@ from rnn_model import RNNModel
 import sys
 import matplotlib
 import numpy as np
-import shutil
-import os
+import time
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -21,11 +20,8 @@ print "Selected dataset: " + str(dataset)
 
 # I/O
 data_dir = "./data/" + dataset
-tensorboard_dir = data_dir + "/tensorboard"
-if os.path.exists(tensorboard_dir):
-    shutil.rmtree(tensorboard_dir)
+tensorboard_dir = data_dir + "/tensorboard/" + str(time.strftime("%Y-%m-%d_%H-%M-%S"))
 input_file = data_dir + "/input.txt"
-
 output_file = data_dir + "/output.txt"
 output = open(output_file, "w")
 output.close()
@@ -36,10 +32,10 @@ SEQUENCE_LENGTH = 50
 LEARNING_RATE = 0.01
 DECAY_RATE = 0.97
 HIDDEN_LAYER_SIZE = 256
-CELLS_SIZE = 3
+CELLS_SIZE = 2
 
-TEXT_SAMPLE_LENGTH = 500
-SAMPLING_FREQUENCY = 1000
+TEXT_SAMPLE_LENGTH = 200
+SAMPLING_FREQUENCY = 500
 LOGGING_FREQUENCY = 1000
 
 
