@@ -104,3 +104,5 @@ venv.bak/
 .mypy_cache/
 rnn_2.py
 rnn_k.py
+
+*.local
