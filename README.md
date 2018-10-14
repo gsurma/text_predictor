@@ -12,9 +12,10 @@ Heavily influenced by [http://karpathy.github.io/2015/05/21/rnn-effectiveness/](
 2. Predict text based on a trained model.
 
 ## Datasets
-	reuters - a collection of reuters headlines (580 MB)
+	darwin - the complete works of Charles Darwin (20 MB)
+	reuters - a collection of reuters headlines (95 MB)
 	war_and_peace - Leo Tolstoy's War and Peace novel (3 MB)
-	wikipedia - excerpt from English Wikipedia (100 MB) 
+	wikipedia - excerpt from English Wikipedia (48 MB) 
 	hackernews - a collection of Hackernews headlines (90 KB)
 	sherlock - a collection of books with Sherlock Holmes (3 MB)
 	shakespeare - the complete works of William Shakespeare (4 MB)
