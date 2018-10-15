@@ -31,7 +31,7 @@ Feel free to add new datasets. Just create a folder in the `./data` directory an
 
 ## Results
 
-Each dataset were trained with the same hyperparameters for ~100 k iterations which on average took about 20 hours on 2.9 GHz Intel i7 Quad-Core CPU.
+Each dataset were trained with the same hyperparameters for ~100 k iterations which on average took about 18 hours on 2.9 GHz Intel i7 Quad-Core CPU.
 
 **Hyperparameters**
 
@@ -132,4 +132,53 @@ Iteration: 100000
 
 <br>
 
+### Shakespeare
+<img src="data/shakespeare/loss.png" width="500">
 
+Iteration: 0
+
+	TfzVRzdYlDehaDHIhzEiZ&,3knZtHJD]kBOFCpWH.wkWCDVHAK;JcoOMpHJtVNvpcrRSZ,hccUNQ EyG -kpEuvR;MW[JWm;EWv]Au!]EIriywVeGYdljvLkoFMRdikQV:AyoSij.M.;R'lK
+	vdtnVkxtzL!'qtW$emHfStGUOoK;LJ h
+	LSyL ?P$KET Z?muR$reIB
+
+<br>
+Iteration: 500
+	ticlother them his steaks? whom father-ple plaise't!
+	
+	HORATIO:
+	
+	GLOILUS:
+	Le wime heast,
+	'Tind soul a bear if thy Gulithes? Preshing;
+	In beto that mad his says,
+	Bock Presrike this pray morrombage wenly
+
+<br>
+Iteration: 1000
+
+	HENI:
+	If which fout in must likest part sors and merr'd?
+	E sin even and mel full and gooder?
+	
+	BRUTUS:
+	Heno Egison to a puenbiloot vieter.
+	
+	DROMIO OF SYRACUSE:
+	That is
+	never standshruced meledder morng
+	
+<br>
+Iteration: 100000
+
+	Be feast, tent?
+	
+	LYSANDER:
+	And thou love so kiss, to dipate.
+	
+	All Cornasiers of Atheniansiage are to my sake; but where in end.
+	
+	APEMANTUS:
+	Did such a pays. Go, we'll proof.
+	
+	BERTRAM:
+	I am reason'dst 
