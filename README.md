@@ -54,6 +54,7 @@ Iteration: **0**
 	2 û?]wg£Jo4qCde,’.'G,h &wIUaDuîxq`cqb!kf5yB
 
 <br>
+
 Iteration: **500**
 
 	"Other. I
@@ -63,6 +64,7 @@ Iteration: **500**
  
 
 <br>
+
 Iteration: **1000**
 
    	some to see me tignaius
@@ -77,6 +79,7 @@ Iteration: **1000**
      
      
 <br>
+
 Iteration: **100000**
 
  	Then mention.""Quite
@@ -99,6 +102,7 @@ Iteration: **0**
 	%oVhkXr[xAlc*Tx’S1–J1LlHN'SuHEsiH
 
 <br>
+
 Iteration: **500**
 
 	 us codhy in N. DeveloLenic pare abouts scax
@@ -109,6 +113,7 @@ Iteration: **500**
 	Trase elacts Macasications Data Freit Paily trigha bourni
 
 <br>
+
 Iteration: **1000**
 
 	 MP
@@ -123,6 +128,7 @@ Iteration: **1000**
 	Lass and dom
 	
 <br>
+
 Iteration: **100000**
 
 	More Than 10 Years Old Available for Free Lens
@@ -142,6 +148,7 @@ Iteration: **0**
 	LSyL ?P$KET Z?muR$reIB
 
 <br>
+
 Iteration: **500**
 
 	ticlother them his steaks? whom father-ple plaise't!
@@ -155,6 +162,7 @@ Iteration: **500**
 	Bock Presrike this pray morrombage wenly
 
 <br>
+
 Iteration: **1000**
 
 	HENI:
@@ -169,6 +177,7 @@ Iteration: **1000**
 	never standshruced meledder morng
 	
 <br>
+
 Iteration: **100000**
 
 	Be feast, tent?
@@ -183,3 +192,48 @@ Iteration: **100000**
 	
 	BERTRAM:
 	I am reason'dst 
+	
+<br>
+
+### War and Peace
+<img src="data/war_and_peace/loss.png" width="500">
+
+Iteration: **0**
+
+	oeLêQ8r2),*FV00Krj﻿F':=BEYGêW﻿f1
+	d'qwAd,X,m;à8)j9V)ExSRaox!l(=3étQäsHOlUZ
+	YgDFI/mpF
+	J﻿P.A7W)5bqN,iC àAiiGp, R﻿k-v1Qm:9ZoX*qDJwq,BW!:59tNv?êR"aE﻿1M;snov=:rlK *oFxK2mL,6V5br﻿Q9LN*LwXGe2dpo3C?mx=i)rYr=f9
+
+<br>
+
+Iteration: **500**
+
+	un-
+	more-alre depiw.
+	
+	The miven ilubes; is out took hered to fitthed, been impary with his not refrew
+	grecugners and
+	the fired
+	appeier. On; was expring. Gche wast.
+	
+	
+	Himpery
+	at it of been th
+
+<br>
+
+Iteration: **1000**
+
+	had like kort and stepped
+	which from it don't repeabes, I now
+	the mayful," he was knew ifue toragn ofatince streatels, should blucticalts. Peterning letter, they his voice went the ninding
+	sonison 
+
+<br>
+
+Iteration: **100000**
+
+	if when Emperord, when our eyes, would be cruel manly
+	tactfully replied that Dolokhov
+	crossing her to them. He looked his face in snow face, but sound at closely deigning dogron (for Germans: "We le
