@@ -47,14 +47,14 @@ Each dataset were trained with the same hyperparameters for ~100 k iterations wh
 ### Sherlock
 <img src="data/sherlock/loss.png" width="500">
 
-Iteration: 0
+Iteration: **0**
 
 	 l é°£I." r, iEgPylXyg
 	m .iüTû  Ccy2M]zTâ.  sSRM£t é5 ’îRlT QAlY4Kv"é)kP£Str5/lQVu )Pe0/;s8leJ.£m40tîJîwB`0]½jyûA`BJi'omNx½2zG iH:gqri76b&g)ie18PM£vA7pßKâNQ6
 	2 û?]wg£Jo4qCde,’.'G,h &wIUaDuîxq`cqb!kf5yB
 
 <br>
-Iteration: 500
+Iteration: **500**
 
 	"Other. I
 	     unwallfore of his had Sommopilor out he hase you thed I it.
@@ -63,7 +63,7 @@ Iteration: 500
  
 
 <br>
-Iteration: 1000
+Iteration: **1000**
 
    	some to see me tignaius
      rely."
@@ -77,7 +77,7 @@ Iteration: 1000
      
      
 <br>
-Iteration: 100000
+Iteration: **100000**
 
  	Then mention.""Quite
      I gather is stillar in silence was written on the whom I reward an
@@ -89,7 +89,7 @@ Iteration: 100000
 ### Hackernews
 <img src="data/hackernews/loss.png" width="500">
 
-Iteration: 0
+Iteration: **0**
 
 	 %‘l~E4*1[▲)j&”&T$b’]u:…–.2WPUlFLu*)Eµk`qb€[QoE'aLesP‘U4.q
 	o_Z2ZPGé‘MIn8beXSB=B“dNuy…uµ20P8vL”(#
@@ -99,7 +99,7 @@ Iteration: 0
 	%oVhkXr[xAlc*Tx’S1–J1LlHN'SuHEsiH
 
 <br>
-Iteration: 500
+Iteration: **500**
 
 	 us codhy in N. DeveloLenic pare abouts scax
 	Microsign Sy Scodwars
@@ -109,7 +109,7 @@ Iteration: 500
 	Trase elacts Macasications Data Freit Paily trigha bourni
 
 <br>
-Iteration: 1000
+Iteration: **1000**
 
 	 MP
 	Tx-: IPGS
@@ -123,7 +123,7 @@ Iteration: 1000
 	Lass and dom
 	
 <br>
-Iteration: 100000
+Iteration: **100000**
 
 	More Than 10 Years Old Available for Free Lens
 	Teshmeration order Google Vision New NSA targets (2016)
@@ -135,14 +135,14 @@ Iteration: 100000
 ### Shakespeare
 <img src="data/shakespeare/loss.png" width="500">
 
-Iteration: 0
+Iteration: **0**
 
 	TfzVRzdYlDehaDHIhzEiZ&,3knZtHJD]kBOFCpWH.wkWCDVHAK;JcoOMpHJtVNvpcrRSZ,hccUNQ EyG -kpEuvR;MW[JWm;EWv]Au!]EIriywVeGYdljvLkoFMRdikQV:AyoSij.M.;R'lK
 	vdtnVkxtzL!'qtW$emHfStGUOoK;LJ h
 	LSyL ?P$KET Z?muR$reIB
 
 <br>
-Iteration: 500
+Iteration: **500**
 
 	ticlother them his steaks? whom father-ple plaise't!
 	
@@ -155,7 +155,7 @@ Iteration: 500
 	Bock Presrike this pray morrombage wenly
 
 <br>
-Iteration: 1000
+Iteration: **1000**
 
 	HENI:
 	If which fout in must likest part sors and merr'd?
@@ -169,7 +169,7 @@ Iteration: 1000
 	never standshruced meledder morng
 	
 <br>
-Iteration: 100000
+Iteration: **100000**
 
 	Be feast, tent?
 	
