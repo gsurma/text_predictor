@@ -31,7 +31,7 @@ Feel free to add new datasets. Just create a folder in the `./data` directory an
 
 ## Results
 
-Each dataset were trained with the same hyperparameters for ~100 k iterations which on average took about 18 hours on 2.9 GHz Intel i7 Quad-Core CPU.
+Each dataset were trained with the same hyperparameters for ~100 k iterations.
 
 **Hyperparameters**
 
@@ -237,3 +237,42 @@ Iteration: **100000**
 	if when Emperord, when our eyes, would be cruel manly
 	tactfully replied that Dolokhov
 	crossing her to them. He looked his face in snow face, but sound at closely deigning dogron (for Germans: "We le
+
+<br>
+
+### Darwin
+<img src="data/darwin/loss.png" width="500">
+
+
+Iteration: **0**
+
+	W⅝[—¤Sé½,°Rá{ú⅛ιW‘œΠ┘NfnáχRœ|NE~{A┐!àμ£μvk¤⅜%àιW⅜,—E.lJW⅓VQαÉIl—
+	á¹′(œM⅜sOΠ¹┘+öô,vt(ë†XYœα^aφIyôdCAι8⅞”¼┐Pü+wœ[N)3⅞(ςÜZçàôeφe⅞–bz⅝dε5É<6D;…T|Qχ…o,z %&T′x=“ΧÂ£×ιD&“Bî·…*—νKt1dHaùuÈ;w*[┘}§Uï(r¾rω&œ”–¹C
+
+<br>
+
+Iteration: **500**
+
+	drable dene qanition, these fist not intirmosposmianim such of Brigagh 1871
+	progixings the pary mance adduary. The litter mame is for the
+	amber not notnot the digracke.  If a amy inter of sindenly u
+
+<br>
+
+Iteration: **1000**
+
+	grand in that ach lengthly show, aslowed me lose," with the exportion; be
+	of the one yearly recome goughed; and species of other livingth forms, those live birdly billo; and is correed
+	much are dorn
+
+<br>
+
+Iteration: **100000**
+
+	repontinht or Mourlen somed letters of swing
+	programections in the mexurius as I may in nature it or grow inglosomes_, it to an
+	younding's offspring-bads for
+	an incanish rew few reprossed
+	finulus,
+
+<br>
