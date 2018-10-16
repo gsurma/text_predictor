@@ -12,6 +12,7 @@ Heavily influenced by [http://karpathy.github.io/2015/05/21/rnn-effectiveness/](
 2. Predict text based on a trained model.
 
 ## Datasets
+	kanye - Kanye West's discography (332 KB)
 	darwin - the complete works of Charles Darwin (20 MB)
 	reuters - a collection of reuters headlines (95 MB)
 	war_and_peace - Leo Tolstoy's War and Peace novel (3 MB)

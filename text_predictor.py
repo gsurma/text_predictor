@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 if len(sys.argv) != 2:
     print "Please select a dataset."
     print "Usage: python text_predictor.py <dataset>"
-    print "Available datasets: shakespeare, wikipedia, reuters, hackernews, war_and_peace, sherlock"
+    print "Available datasets: kanye, shakespeare, wikipedia, reuters, hackernews, war_and_peace, sherlock"
     exit(1)
 else:
     dataset = sys.argv[1]
@@ -31,11 +31,11 @@ BATCH_SIZE = 32
 SEQUENCE_LENGTH = 50
 LEARNING_RATE = 0.01
 DECAY_RATE = 0.97
-HIDDEN_LAYER_SIZE = 256
+HIDDEN_LAYER_SIZE = 512 #256
 CELLS_SIZE = 2
 
-TEXT_SAMPLE_LENGTH = 200
-SAMPLING_FREQUENCY = 500
+TEXT_SAMPLE_LENGTH = 500 #200
+SAMPLING_FREQUENCY = 1000
 LOGGING_FREQUENCY = 1000
 
 
