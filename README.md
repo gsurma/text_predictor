@@ -334,12 +334,14 @@ Iteration: **231000**
 	
 	right here, history on you
 	Dees so can do now, sippin' with niggas want to go
+	
 	[Hook]
 	Good morning!
 	He wanna kend care helped all wing… the live, man
 	I'm taking all in my sleep, Im out him and I ain't inspired?
 	Okay, go you're pastor save being make them
 	White hit Victure up, it can go down
+	
 	[Outro: Kanye West]
 	One time
 	To make them other you're like Common
