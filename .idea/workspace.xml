@@ -3,21 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="74640e70-8604-4725-8cc1-44c73600bdb5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hackernews/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/hackernews/loss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hackernews/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/hackernews/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/reuters/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/reuters/loss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/reuters/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/reuters/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/shakespeare/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/shakespeare/loss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/shakespeare/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/shakespeare/output.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sherlock/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/sherlock/loss.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/sherlock/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/sherlock/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/war_and_peace/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/war_and_peace/loss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/war_and_peace/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/war_and_peace/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wikipedia/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/wikipedia/loss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wikipedia/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/wikipedia/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_provider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rnn_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/rnn_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text_predictor.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_predictor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="text_predictor.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="text_predictor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/text_predictor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="77" column="36" lean-forward="true" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+            <state relative-caret-position="495">
+              <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -49,8 +36,8 @@
       <file leaf-file-name="data_provider.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_provider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="630">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -58,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rnn_model.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rnn_model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rnn_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+            <state relative-caret-position="90">
+              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -146,6 +133,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -157,7 +145,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -274,17 +261,17 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.19288889" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32977778" />
       <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.19288889" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22555317" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23126338" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -606,20 +593,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/text_predictor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="77" column="36" lean-forward="true" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_provider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="630">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -628,8 +605,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rnn_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        <state relative-caret-position="90">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/text_predictor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

@@ -32,7 +32,7 @@ Feel free to add new datasets. Just create a folder in the `./data` directory an
 
 ## Results
 
-Each dataset were trained with the same hyperparameters for ~100 k iterations.
+Each dataset were trained with the same hyperparameters.
 
 **Hyperparameters**
 
@@ -277,3 +277,71 @@ Iteration: **100000**
 	finulus,
 
 <br>
+
+### Kanye
+<img src="data/kanye/loss.png" width="500">
+
+Iteration: **0**
+
+	9hu71JQ)eA"oqwrAAUwG5Wv7rvM60[*$Y!:1v*8tbkB+k 8IGn)QWv8NR.Spi3BtK[VteRer1GQ,it"kD?XVel3lNuN+G//rI' Sl?ssm
+	 NbH # Yk2uY"fmSVFah(B]uYZv+2]nsMX(qX9s+Rn+YAM.y/2 Hp9a,ZQOu,dM3.;im$Jca4E6(HS'D
+	[itYYQG#(gahU(gGoFYi)ucubL3 #iU32 8rdwIG7HJYSpDG*j,5
+	4phPY'SqiZMpVH-[KEkUjNFyIC#AInX
+	ys0sw8&IaNC1mYSs$*lW#6e,X(aJDgtx"!u-*N6J(N&Awk7X3P0nWvx)oJLVbWncCS
+	] P2wQTKTtSXrK9pjR0x5bcwU$ KA7"y+ :0:?wd(BOX1:,LICy]-v/)Y5K(G.Sa qP1vf(LXUDe4jqU3a3s$!cxVv(TO#yRoiXD#ZXw0ny09lu;gFaIqCiyEB)YhP,P
+	#G$T/].X3m]b9fc
+	hgsn.QG2WIZ3JS#I
+
+<br>
+
+Iteration: **1000**
+
+	am our 200 shought 2 and but
+	One we -fuckister do fresh smandles
+	Juco pick with to sont party agmagle
+	Then I no meant he don't ganiscimes mad is so cametie want
+	What
+	Mama sumin' find Abortsimes, man
+	You's partystend to heed)
+	Never)
+	Whats what a gonna bodry Find down
+	Wihe a mostry that day to the news winces
+	(Had what icherced and I'm nigga"" and some talk to beinn shood late you, fly Me down
+	Youce, I and fleassy is
+	
+<br>
+
+Iteration: **10000**
+
+	as the comphol of step
+	Stand American, no more
+	Yeah my Benz,.AD and brosi?
+	Cause you'll take me, breaks to the good I'll never said, ""I met her bitch's pussy is a proll ...
+	WHO WILL Say everything
+	We been a minute it's liberatimes?
+	(Stop that religious and the hegasn of me, steps dead)
+	I can't contlights you
+	I bet stop me, I won't you
+	I cant face and flesed
+	Tellin' it and sales there
+	Got a niggas ass a lots over?
+	So I clay messin 6 wrong baby
+	Dog, we lose, ""Can't say how I'm heren
+	
+<br>
+
+Iteration: **231000**
+	
+	right here, history on you
+	Dees so can do now, sippin' with niggas want to go
+	[Hook]
+	Good morning!
+	He wanna kend care helped all wing… the live, man
+	I'm taking all in my sleep, Im out him and I ain't inspired?
+	Okay, go you're pastor save being make them
+	White hit Victure up, it can go down
+	[Outro: Kanye West]
+	One time
+	To make them other you're like Common
+	A lit it, I'mma bridgeidenace before the most high
+	Ugh! we get much higher

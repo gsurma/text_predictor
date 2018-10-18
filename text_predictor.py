@@ -16,7 +16,6 @@ if len(sys.argv) != 2:
     exit(1)
 else:
     dataset = sys.argv[1]
-print "Selected dataset: " + str(dataset)
 
 # I/O
 data_dir = "./data/" + dataset
@@ -28,13 +27,13 @@ output.close()
 
 # Hyperparams
 BATCH_SIZE = 32
-SEQUENCE_LENGTH = 50
+SEQUENCE_LENGTH = 25
 LEARNING_RATE = 0.01
 DECAY_RATE = 0.97
-HIDDEN_LAYER_SIZE = 512 #256
+HIDDEN_LAYER_SIZE = 256
 CELLS_SIZE = 2
 
-TEXT_SAMPLE_LENGTH = 500 #200
+TEXT_SAMPLE_LENGTH = 500
 SAMPLING_FREQUENCY = 1000
 LOGGING_FREQUENCY = 1000
 
@@ -101,28 +100,11 @@ def plot(data, x_label, y_label):
 
 
 if __name__ == '__main__':
+    print "Selected dataset: " + str(dataset)
+    print "Batch size: " + str(BATCH_SIZE)
+    print "Sequence lenght: " + str(SEQUENCE_LENGTH)
+    print "Learning rate: " + str(LEARNING_RATE)
+    print "Decay rate: " + str(DECAY_RATE)
+    print "Hidden layer size: " + str(HIDDEN_LAYER_SIZE)
+    print "Cells size: " + str(CELLS_SIZE)
     rnn()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
