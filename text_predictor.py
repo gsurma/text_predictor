@@ -102,7 +102,7 @@ def plot(data, x_label, y_label):
 if __name__ == '__main__':
     print "Selected dataset: " + str(dataset)
     print "Batch size: " + str(BATCH_SIZE)
-    print "Sequence lenght: " + str(SEQUENCE_LENGTH)
+    print "Sequence length: " + str(SEQUENCE_LENGTH)
     print "Learning rate: " + str(LEARNING_RATE)
     print "Decay rate: " + str(DECAY_RATE)
     print "Hidden layer size: " + str(HIDDEN_LAYER_SIZE)
