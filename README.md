@@ -9,9 +9,9 @@ Check out corresponding Medium article:
 
 [Text Predictor - Generating Rap Lyrics with Recurrent Neural Networks (LSTMs)📄](https://towardsdatascience.com/text-predictor-generating-rap-lyrics-with-recurrent-neural-networks-lstms-c3a1acbbda79)
 
+---
 
-
-Heavily influenced by [http://karpathy.github.io/2015/05/21/rnn-effectiveness/]().
+Heavily influenced by: [http://karpathy.github.io/2015/05/21/rnn-effectiveness/]().
 
 ## Idea
 1. Train RNN LSTM  on a given dataset (.txt file).
